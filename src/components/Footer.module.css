@@ -1,0 +1,89 @@
+.footer {
+  border-top: 1px solid var(--border-glass);
+  padding: 48px 0 32px;
+}
+
+.footerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footerLogo {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.footerLogoAccent {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footerCopy {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.footerSocials {
+  display: flex;
+  gap: 12px;
+}
+
+.footerSocialLink {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  font-size: 1.1rem;
+  transition: all var(--transition-fast);
+}
+
+.footerSocialLink:hover {
+  border-color: var(--accent-1);
+  background: rgba(139, 92, 246, 0.1);
+  transform: translateY(-3px);
+}
+
+.backToTop {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-gradient);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  color: #fff;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.backToTop:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+}
+
+@media (max-width: 768px) {
+  .footerInner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footerLeft {
+    align-items: center;
+  }
+}
