@@ -1,28 +1,27 @@
 import styles from "./Projects.module.css";
 import { HiOutlineRocketLaunch } from "react-icons/hi2";
+import Image, { StaticImageData } from "next/image";
+import project1Img from "../images/project_1.png";
 
 interface Project {
   title: string;
   desc: string;
   tags: string[];
-  emoji: string;
-  gradient: string;
-  liveUrl: string;
+  emoji?: string;
+  gradient?: string;
+  image?: StaticImageData | string;
+  liveUrl?: string;
   repoUrl: string;
 }
 
-// Tambahkan project kamu di sini
 const projects: Project[] = [
-  // Contoh format:
-  // {
-  //   title: "Nama Project",
-  //   desc: "Deskripsi singkat project kamu.",
-  //   tags: ["React", "Next.js", "TypeScript"],
-  //   emoji: "🚀",
-  //   gradient: "linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2))",
-  //   liveUrl: "https://project-demo.com",
-  //   repoUrl: "https://github.com/username/project",
-  // },
+  {
+    title: "Biofir Health Jewelry E-Commerce App",
+    desc: "A mobile application for selling Biofir health necklaces and bracelets. Built with Flutter and integrated with Firebase for real-time data management and user authentication.",
+    tags: ["Flutter", "Firebase", "Dart", "Mobile App"],
+    image: project1Img,
+    repoUrl: "https://github.com/dailam008/Project_Perangkat_Lunak.git",
+  },
 ];
 
 export default function Projects() {
@@ -43,12 +42,21 @@ export default function Projects() {
             {projects.map((project) => (
               <div key={project.title} className={styles.projectCard}>
                 <div className={styles.projectImage}>
-                  <div
-                    className={styles.projectImagePlaceholder}
-                    style={{ background: project.gradient }}
-                  >
-                    {project.emoji}
-                  </div>
+                  {project.image ? (
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      style={{ objectFit: "cover" }}
+                    />
+                  ) : (
+                    <div
+                      className={styles.projectImagePlaceholder}
+                      style={{ background: project.gradient }}
+                    >
+                      {project.emoji}
+                    </div>
+                  )}
                 </div>
 
                 <div className={styles.projectBody}>
@@ -64,21 +72,23 @@ export default function Projects() {
                   </div>
 
                   <div className={styles.projectLinks}>
-                    <a
-                      href={project.liveUrl}
-                      className={`${styles.projectLink} ${styles.projectLinkPrimary}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Live Demo ↗
-                    </a>
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        className={`${styles.projectLink} ${styles.projectLinkPrimary}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Live Demo ↗
+                      </a>
+                    )}
                     <a
                       href={project.repoUrl}
                       className={`${styles.projectLink} ${styles.projectLinkSecondary}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      GitHub
+                      GitHub ↗
                     </a>
                   </div>
                 </div>
