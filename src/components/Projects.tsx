@@ -2,6 +2,7 @@ import styles from "./Projects.module.css";
 import { HiOutlineRocketLaunch } from "react-icons/hi2";
 import Image, { StaticImageData } from "next/image";
 import project1Img from "../images/project_1.png";
+import project2Img from "../images/project_2.png";
 
 interface Project {
   title: string;
@@ -21,6 +22,13 @@ const projects: Project[] = [
     tags: ["Flutter", "Firebase", "Dart", "Mobile App"],
     image: project1Img,
     repoUrl: "https://github.com/dailam008/Project_Perangkat_Lunak.git",
+  },
+  {
+    title: "AI Smart Money Guardian",
+    desc: "An intelligent, full-stack personal finance tracker and budget management platform. Features include interactive dashboards and smart categorization.",
+    tags: ["Next.js", "TypeScript", "Python", "FastAPI", "Tailwind CSS"],
+    image: project2Img,
+    repoUrl: "https://github.com/dailam008/AI_Smart_Money_Guardian",
   },
 ];
 
