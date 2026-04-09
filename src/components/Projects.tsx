@@ -1,8 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import styles from "./Projects.module.css";
 import { HiOutlineRocketLaunch } from "react-icons/hi2";
 import Image, { StaticImageData } from "next/image";
 import project1Img from "../images/project_1.png";
 import project2Img from "../images/project_2.png";
+import project3Img from "../images/project_3.png";
 
 interface Project {
   title: string;
@@ -13,6 +17,7 @@ interface Project {
   image?: StaticImageData | string;
   liveUrl?: string;
   repoUrl: string;
+  category: string;
 }
 
 const projects: Project[] = [
@@ -20,6 +25,7 @@ const projects: Project[] = [
     title: "Biofir Health Jewelry E-Commerce App",
     desc: "A mobile application for selling Biofir health necklaces and bracelets. Built with Flutter and integrated with Firebase for real-time data management and user authentication.",
     tags: ["Flutter", "Firebase", "Dart", "Mobile App"],
+    category: "Mobile",
     image: project1Img,
     repoUrl: "https://github.com/dailam008/Project_Perangkat_Lunak.git",
   },
@@ -27,12 +33,28 @@ const projects: Project[] = [
     title: "AI Smart Money Guardian",
     desc: "An intelligent, full-stack personal finance tracker and budget management platform. Features include interactive dashboards and smart categorization.",
     tags: ["Next.js", "TypeScript", "Python", "FastAPI", "Tailwind CSS"],
+    category: "Web App",
     image: project2Img,
     repoUrl: "https://github.com/dailam008/AI_Smart_Money_Guardian",
+  },
+  {
+    title: "Git Helper CLI",
+    desc: "A beautiful, interactive CLI tool that automates daily Git operations. Features include one-step quick push, interactive branching, merging, and stash management.",
+    tags: ["Node.js", "Inquirer.js", "CLI", "Automation"],
+    category: "CLI/Tools",
+    image: project3Img,
+    repoUrl: "https://github.com/dailam008/git-helper.git",
   },
 ];
 
 export default function Projects() {
+  const categories = ["All", "Web App", "Mobile", "CLI/Tools"];
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredProjects = projects.filter((project) => 
+    activeCategory === "All" || project.category === activeCategory
+  );
+
   return (
     <section className={`section ${styles.projects}`} id="projects">
       <div className="container">
@@ -45,9 +67,21 @@ export default function Projects() {
           building great products.
         </p>
 
-        {projects.length > 0 ? (
+        <div className={styles.filterContainer}>
+          {categories.map((category) => (
+            <button
+              key={category}
+              className={`${styles.filterTab} ${activeCategory === category ? styles.activeTab : ""}`}
+              onClick={() => setActiveCategory(category)}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
+        {filteredProjects.length > 0 ? (
           <div className={styles.projectsGrid}>
-            {projects.map((project) => (
+            {filteredProjects.map((project) => (
               <div key={project.title} className={styles.projectCard}>
                 <div className={styles.projectImage}>
                   {project.image ? (
