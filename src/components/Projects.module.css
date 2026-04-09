@@ -188,6 +188,15 @@
 
 /* Tablet */
 @media (max-width: 1024px) {
+  .filterContainer {
+    gap: 10px;
+  }
+
+  .filterTab {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+
   .projectsGrid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
@@ -204,6 +213,16 @@
 
 /* Phone */
 @media (max-width: 768px) {
+  .filterContainer {
+    gap: 8px;
+    margin-bottom: 30px;
+  }
+
+  .filterTab {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+  }
+
   .projectsGrid {
     grid-template-columns: 1fr;
   }
