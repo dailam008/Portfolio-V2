@@ -13,6 +13,8 @@ import {
   SiGit,
   SiDocker,
   SiFigma,
+  SiPhp,
+  SiLaravel,
 } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
 
@@ -30,6 +32,8 @@ const skills = [
   { name: "Git", icon: <SiGit />, level: 85, color: "#F05032" },
   { name: "Docker", icon: <SiDocker />, level: 70, color: "#2496ED" },
   { name: "Figma", icon: <SiFigma />, level: 75, color: "#F24E1E" },
+  { name: "PHP", icon: <SiPhp />, level: 85, color: "#777BB4" },
+  { name: "Laravel", icon: <SiLaravel />, level: 90, color: "#FF2D20" },
   { name: "REST API", icon: <TbApi />, level: 85, color: "#8B5CF6" },
 ];
 

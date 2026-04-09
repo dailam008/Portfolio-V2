@@ -7,6 +7,7 @@ import Image, { StaticImageData } from "next/image";
 import project1Img from "../images/project_1.png";
 import project2Img from "../images/project_2.png";
 import project3Img from "../images/project_3.png";
+import project4Img from "../images/project_4.png";
 
 interface Project {
   title: string;
@@ -44,6 +45,14 @@ const projects: Project[] = [
     category: "CLI/Tools",
     image: project3Img,
     repoUrl: "https://github.com/dailam008/git-helper.git",
+  },
+  {
+    title: "PlayStation Rental Management System",
+    desc: "A comprehensive web application for managing PlayStation rental businesses. Features include active session tracking with Start/Stop controls, PS unit management, and customizable billing timers.",
+    tags: ["Laravel 12", "PHP 8.2", "Tailwind CSS v4", "Vite"],
+    category: "Web App",
+    image: project4Img,
+    repoUrl: "https://github.com/dailam008/DYS_Project.git",
   },
 ];
 
