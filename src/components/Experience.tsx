@@ -58,7 +58,7 @@ export default function Experience() {
                 <div className={styles.cardInfo}>
                   <h3 className={styles.cardRole}>NOC Intern</h3>
                   <span className={styles.cardCompany}>
-                    PT Medis Telekomunikasi Mandiri (MTM)
+                    PT Media Telekomunikasi Mandiri (MTM)
                   </span>
                   <span className={styles.cardDivision}>
                     Network Operations Center (NOC) Division

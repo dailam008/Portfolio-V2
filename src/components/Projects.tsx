@@ -8,6 +8,7 @@ import project1Img from "../images/project_1.png";
 import project2Img from "../images/project_2.png";
 import project3Img from "../images/project_3.png";
 import project4Img from "../images/project_4.png";
+import project5Img from "../images/project_5.png";
 
 interface Project {
   title: string;
@@ -53,6 +54,14 @@ const projects: Project[] = [
     category: "Web App",
     image: project4Img,
     repoUrl: "https://github.com/dailam008/DYS_Project.git",
+  },
+  {
+    title: "RapidConvert — All-in-One File Converter",
+    desc: "A 100% client-side web application offering 15+ productivity tools including PDF conversion, image editing, compression, and OCR, processing everything locally for maximum privacy.",
+    tags: ["Vanilla JS", "Vite", "PDF.js", "Tesseract.js"],
+    category: "Web App",
+    image: project5Img,
+    repoUrl: "https://github.com/dailam008/rapidconvert.git",
   },
 ];
 
