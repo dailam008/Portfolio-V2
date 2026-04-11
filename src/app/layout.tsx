@@ -33,11 +33,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
-      <body style={{ fontFamily: "var(--font-inter), sans-serif" }}>
+      <body 
+        style={{ fontFamily: "var(--font-inter), sans-serif" }}
+        suppressHydrationWarning
+      >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <Preloader />
           <Navbar />
-          <main>{children}</main>
+          <main className="main-content">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

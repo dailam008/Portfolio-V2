@@ -109,6 +109,11 @@
   transform: translateZ(0); /* Hardware acceleration */
 }
 
+:global(.light) .heroOrb {
+  opacity: 0.45;
+  filter: blur(140px);
+}
+
 .heroOrb1 {
   width: 500px;
   height: 500px;
@@ -166,18 +171,22 @@
   }
 
   .heroOrb1 {
-    width: 350px;
-    height: 350px;
+    width: 250px;
+    height: 250px;
+    top: -50px;
+    right: -50px;
   }
 
   .heroOrb2 {
-    width: 280px;
-    height: 280px;
+    width: 220px;
+    height: 220px;
+    bottom: 20px;
+    left: -40px;
   }
 
   .heroOrb3 {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
   }
 }
 

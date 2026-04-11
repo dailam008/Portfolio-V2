@@ -25,6 +25,7 @@ export default function Preloader() {
           initial={{ opacity: 1 }}
           exit={{ 
             opacity: 0, 
+            pointerEvents: "none",
             transition: { duration: 0.8, ease: "easeInOut" } 
           }}
         >
