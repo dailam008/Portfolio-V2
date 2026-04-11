@@ -9,19 +9,25 @@ export default function Preloader() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const timer = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setTimeout(() => setLoading(false), 500);
-          return 100;
-        }
-        return prev + Math.floor(Math.random() * 10) + 1;
+        if (prev >= 100) return 100;
+        const diff = Math.random() * 15;
+        return Math.min(prev + diff, 100);
       });
-    }, 100);
+    }, 150);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    if (progress === 100) {
+      const timeout = setTimeout(() => {
+        setLoading(false);
+      }, 600);
+      return () => clearTimeout(timeout);
+    }
+  }, [progress]);
 
   return (
     <AnimatePresence>
@@ -53,7 +59,7 @@ export default function Preloader() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
-              {progress}%
+              {Math.round(progress)}%
             </motion.div>
           </div>
         </motion.div>
