@@ -10,6 +10,8 @@ import project3Img from "../images/project_3.png";
 import project4Img from "../images/project_4.png";
 import project5Img from "../images/project_5.png";
 import project6Img from "../images/project_6.png";
+import project7Img from "../images/project_7.png";
+
 
 interface Project {
   title: string;
@@ -71,6 +73,14 @@ const projects: Project[] = [
     category: "Web App",
     image: project6Img,
     repoUrl: "https://github.com/dailam008/UMKM_DIGITAL_PLATFORM.git",
+  },
+  {
+    title: "DevForge CLI Orchestrator",
+    desc: "A professional-grade local development orchestrator that automates complex workflows into single-command executions. Features smart project scaffolding, concurrent service launching, and full MySQL database management within the CLI.",
+    tags: ["Node.js", "Commander.js", "Inquirer.js", "Automation", "Workflow"],
+    category: "CLI/Tools",
+    image: project7Img,
+    repoUrl: "https://github.com/dailam008/DEVFORGE-TOOLS.git",
   },
 ];
 
