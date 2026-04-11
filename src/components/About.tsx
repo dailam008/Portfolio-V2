@@ -1,14 +1,50 @@
+"use client";
+
 import Image from "next/image";
 import profilePhoto from "@/images/Dailam.png";
 import styles from "./About.module.css";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 
 export default function About() {
+  const x = useMotionValue(0);
+  const rotate = useTransform(x, [-150, 150], [-25, 25]);
+  const shadowX = useTransform(x, [-150, 150], [20, -20]);
+
   return (
     <section className={`section ${styles.about}`} id="about">
       <div className="container">
         <div className={styles.aboutGrid}>
-          <div className={styles.aboutImageWrapper}>
-            <div className={styles.aboutImageBox}>
+          <motion.div 
+            className={styles.aboutImageWrapper}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            style={{ paddingTop: "60px" }}
+          >
+            <motion.div 
+              className={styles.aboutImageBox}
+              style={{ 
+                x, 
+                rotate,
+                boxShadow: useTransform(shadowX, (val) => `${val}px 25px 50px rgba(0,0,0,0.3)`)
+              }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.8}
+              whileDrag={{ cursor: "grabbing" }}
+              whileHover={{ cursor: "grab" }}
+              animate={{
+                rotate: [rotate.get(), rotate.get() + 1.5, rotate.get(), rotate.get() - 1.5, rotate.get()],
+              }}
+              transition={{
+                rotate: {
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
+              }}
+            >
               <Image
                 src={profilePhoto}
                 alt="Dailam - Developer"
@@ -17,11 +53,28 @@ export default function About() {
                 className={styles.aboutImage}
                 priority
               />
-            </div>
-            <div className={styles.aboutImageDecor} />
-          </div>
+            </motion.div>
+            <motion.div 
+              className={styles.aboutImageDecor} 
+              animate={{
+                rotate: [0, 90, 180, 270, 360],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+          </motion.div>
 
-          <div className={styles.aboutContent}>
+          <motion.div 
+            className={styles.aboutContent}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             <span className="sectionLabel">About Me</span>
             <h2 className="sectionTitle">
               Turning ideas into{" "}
@@ -66,7 +119,7 @@ export default function About() {
               <span>Let&apos;s Talk</span>
               <span>💬</span>
             </a>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

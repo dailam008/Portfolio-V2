@@ -46,6 +46,24 @@
   --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.light {
+  --bg-primary: #f8f9fc;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.8);
+  --bg-glass: rgba(139, 92, 246, 0.04);
+  --border-glass: rgba(0, 0, 0, 0.08);
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+
+  --accent-1: #7c3aed;
+  --accent-2: #0891b2;
+  
+  --shadow-glow: 0 0 60px rgba(139, 92, 246, 0.1);
+  --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;

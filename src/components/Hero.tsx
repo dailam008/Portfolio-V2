@@ -1,6 +1,30 @@
+"use client";
+
 import styles from "./Hero.module.css";
+import { motion, Variants } from "framer-motion";
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 2.2,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
 
 export default function Hero() {
+
   return (
     <section className={styles.hero} id="hero">
       <div className={styles.heroBg}>
@@ -10,23 +34,28 @@ export default function Hero() {
         <div className={styles.gridPattern} />
       </div>
 
-      <div className={`container ${styles.heroContent}`}>
-        <div className={`${styles.heroBadge} animFadeInUp`}>
+      <motion.div
+        className={`container ${styles.heroContent}`}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div className={styles.heroBadge} variants={itemVariants}>
           <span className={styles.heroBadgeDot} />
           Available for work
-        </div>
+        </motion.div>
 
-        <h1 className={`${styles.heroTitle} animFadeInUp animDelay1`}>
+        <motion.h1 className={styles.heroTitle} variants={itemVariants}>
           Hi, I&apos;m
           <span className={styles.heroName}>Dailam</span>
-        </h1>
+        </motion.h1>
 
-        <p className={`${styles.heroSubtitle} animFadeInUp animDelay2`}>
+        <motion.p className={styles.heroSubtitle} variants={itemVariants}>
           A passionate full-stack developer crafting modern, beautiful, and
           performant web experiences that delight users and drive results.
-        </p>
+        </motion.p>
 
-        <div className={`${styles.heroActions} animFadeInUp animDelay3`}>
+        <motion.div className={styles.heroActions} variants={itemVariants}>
           <a href="#projects" className="btnPrimary">
             <span>View My Work</span>
             <span>→</span>
@@ -34,9 +63,9 @@ export default function Hero() {
           <a href="#contact" className="btnOutline">
             Get in Touch
           </a>
-        </div>
+        </motion.div>
 
-        <div className={`${styles.heroStats} animFadeInUp animDelay4`}>
+        <motion.div className={styles.heroStats} variants={itemVariants}>
           <div className={styles.statItem}>
             <div className={styles.statNumber}>3+</div>
             <div className={styles.statLabel}>Years Experience</div>
@@ -49,8 +78,8 @@ export default function Hero() {
             <div className={styles.statNumber}>10+</div>
             <div className={styles.statLabel}>Happy Clients</div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

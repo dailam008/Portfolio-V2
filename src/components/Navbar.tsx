@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
+import { useTheme } from "next-themes";
+import { HiMoon, HiSun } from "react-icons/hi2";
 
 const navItems = [
   { label: "Home", href: "#hero" },
@@ -15,12 +17,19 @@ const navItems = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
   const scrollTo = (href: string) => {
     setMobileOpen(false);
@@ -51,15 +60,25 @@ export default function Navbar() {
             ))}
           </div>
 
-          <button
-            className={`${styles.hamburger} ${mobileOpen ? styles.hamburgerOpen : ""}`}
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            <span className={styles.hamburgerLine} />
-            <span className={styles.hamburgerLine} />
-            <span className={styles.hamburgerLine} />
-          </button>
+          <div className={styles.navActions}>
+            <button
+              className={styles.themeToggle}
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+            >
+              {mounted && (theme === "dark" ? <HiSun /> : <HiMoon />)}
+            </button>
+
+            <button
+              className={`${styles.hamburger} ${mobileOpen ? styles.hamburgerOpen : ""}`}
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+            >
+              <span className={styles.hamburgerLine} />
+              <span className={styles.hamburgerLine} />
+              <span className={styles.hamburgerLine} />
+            </button>
+          </div>
         </div>
       </nav>
 

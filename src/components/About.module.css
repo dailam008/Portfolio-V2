@@ -20,6 +20,35 @@
   aspect-ratio: 4/5;
   background: var(--bg-glass);
   border: 1px solid var(--border-glass);
+  transform-origin: top center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  will-change: transform, box-shadow;
+}
+
+.aboutImageWrapper::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: var(--accent-1);
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 0 10px var(--accent-1);
+}
+
+.aboutImageWrapper::after {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--accent-1), transparent);
+  z-index: 1;
 }
 
 .aboutImage {
