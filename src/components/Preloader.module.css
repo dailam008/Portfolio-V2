@@ -1,53 +1,101 @@
-.preloader {
+.wrapper {
   position: fixed;
   inset: 0;
-  background: var(--bg-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
+  overflow: hidden;
+  background: transparent;
+}
+
+.panel,
+.panelBottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50.5%;
+  /* Slight overlap to prevent gap */
+  background: #0a0a0f;
+  z-index: 1;
+}
+
+.panel {
+  top: 0;
+}
+
+.panelBottom {
+  bottom: 0;
 }
 
 .content {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90%;
-  max-width: 320px;
-  padding: 20px;
+  width: 100%;
+  padding: 0 20px;
 }
 
-.logo {
-  font-size: clamp(1.8rem, 8vw, 2.5rem);
-  font-weight: 800;
-  letter-spacing: 2px;
-  color: var(--text-primary);
-  margin-bottom: 24px;
-  text-align: center;
+.logoWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding: 10px 40px;
+}
+
+.logoContainer {
+  display: flex;
+  gap: clamp(6px, 1.5vw, 12px);
+  position: relative;
+  z-index: 2;
+}
+
+.letter {
+  font-size: clamp(2.2rem, 15vw, 5rem);
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
 }
 
 .dot {
+  font-size: clamp(2.2rem, 15vw, 5rem);
+  font-weight: 900;
   color: var(--accent-1);
 }
 
-.progressContainer {
-  width: 100%;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 16px;
-}
-
-.progressBar {
+.shimmer {
+  position: absolute;
+  top: 0;
+  width: 100px;
   height: 100%;
-  background: var(--accent-gradient);
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(139, 92, 246, 0.2),
+      transparent);
+  transform: skewX(-20deg);
+  z-index: 1;
 }
 
-.percentage {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--accent-1);
-  letter-spacing: 2px;
-  font-variant-numeric: tabular-nums;
+.loadingText {
+  margin-top: 24px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 6px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .logoContainer {
+    gap: 4px;
+  }
+
+  .loadingText {
+    letter-spacing: 4px;
+    font-size: 0.6rem;
+  }
 }
