@@ -43,12 +43,38 @@
 }
 
 .projectsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  display: flex;
+  flex-wrap: nowrap;
   gap: 28px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 24px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.projectsGrid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.projectsGrid::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+}
+
+.projectsGrid::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.projectsGrid::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .projectCard {
+  flex: 0 0 380px;
+  scroll-snap-align: start;
   background: var(--bg-glass);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-xl);
@@ -56,7 +82,8 @@
   transition: all var(--transition-normal);
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: auto;
+  min-height: 100%;
 }
 
 .projectCard:hover {
@@ -198,8 +225,12 @@
   }
 
   .projectsGrid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
+    padding-bottom: 20px;
+  }
+
+  .projectCard {
+    flex: 0 0 320px;
   }
 
   .projectImage {
@@ -224,7 +255,13 @@
   }
 
   .projectsGrid {
-    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-bottom: 16px;
+  }
+
+  .projectCard {
+    flex: 0 0 85vw;
+    /* Leaves a bit of the next card visible for context */
   }
 
   .projectImage {
